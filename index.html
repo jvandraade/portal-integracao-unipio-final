@@ -1,0 +1,1016 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portal de Integração - Grupo Pio Décimo" />
+    <title>Portal de Integração | Grupo Pio Décimo</title>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ==================== RESET & BASE ==================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        background-color: #e7e6e6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* ==================== CSS VARIABLES ==================== */
+      :root {
+        /* Cores principais */
+        --verde-unipio: #68ab6a;
+        --verde-navbar: #1c5a1c;
+        --vermelho-pio: #c20e1a;
+        --branco: #fff;
+
+        /* Neutros */
+        --cinza-escuro: #333;
+        --cinza-medio: #666;
+        --cinza-claro: #f5f5f5;
+        --preto: #000;
+
+        /* Sombras suaves para botões */
+        --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 20px 35px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        --shadow-button: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      /* ==================== NAVBAR VERDE ==================== */
+      .navbar {
+        background: var(--verde-navbar);
+        padding: 1.25rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        position: relative;
+        z-index: 100;
+      }
+
+      .navbar-logo {
+        height: 55px;
+        width: auto;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+
+      .navbar-title {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: var(--branco);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ==================== MAIN CONTENT ==================== */
+      .container {
+        flex: 1;
+        max-width: 1200px; /* REDUZIDO de 1600px para mais espaço lateral */
+        margin: 0 auto;
+        padding: 2rem 3rem;
+        width: 100%;
+      }
+
+      /* ==================== 3 ABAS PRINCIPAIS ==================== */
+      .main-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tab-card {
+        background: var(--branco);
+        border: 3px solid var(--preto);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-card);
+        transition: none;
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tab-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--verde-navbar); /* VERDE DA NAVBAR */
+        text-transform: uppercase;
+        border-bottom: 3px solid var(--preto);
+        padding-bottom: 0.8rem;
+      }
+
+      /* ==================== ABA 1: PORTAL ACADÊMICO ==================== */
+      .tab-content-divided {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: 100%;
+        justify-content: center;
+      }
+
+      .access-buttons {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .btn-access {
+        flex: 1;
+        padding: 1.75rem 0.5rem;
+        background: var(--branco);
+        border: 3px solid var(--preto);
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--preto);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .btn-access:hover {
+        background: var(--verde-unipio);
+        color: var(--branco);
+        border-color: var(--verde-unipio);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(104, 171, 106, 0.4);
+      }
+
+      .btn-access:hover .btn-icon {
+        background: transparent;
+      }
+
+      .btn-access:hover .btn-icon svg {
+        fill: var(--branco);
+      }
+
+      .btn-icon {
+        width: 65px;
+        height: 65px;
+        background: var(--cinza-claro);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+      }
+
+      .btn-icon svg {
+        width: 38px;
+        height: 38px;
+        fill: var(--verde-navbar);
+        transition: fill 0.3s ease;
+      }
+
+      .divider {
+        height: 2px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 0.75rem 0;
+      }
+
+      .section-subtitle {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-align: center;
+        color: var(--verde-navbar);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.6rem;
+      }
+
+      /* ==================== ABA 2: EDUCONNECT COM QR CODES ==================== */
+      .educonnect-qr-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        margin-top: 0.4rem;
+      }
+
+      .educonnect-qr-box {
+        background: var(--cinza-claro);
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .educonnect-qr-box:hover {
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        border-color: var(--verde-unipio);
+        background: white;
+      }
+
+      .educonnect-qr-box::after {
+        content: '🔍 Ampliar';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(28, 90, 28, 0.9);
+        color: white;
+        padding: 0.3rem;
+        font-size: 0.6rem;
+        font-weight: 600;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .educonnect-qr-box:hover::after {
+        transform: translateY(0);
+      }
+
+      .educonnect-qr-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0.3rem;
+        color: var(--cinza-escuro);
+        text-transform: uppercase;
+      }
+
+      .educonnect-qr-image {
+        width: 100%;
+        aspect-ratio: 1;
+        background: var(--branco);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.3rem;
+      }
+
+      .educonnect-qr-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* ==================== ABA 3: QR CODES E-MEC ==================== */
+      .emec-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        margin-top: 0.4rem;
+      }
+
+      .emec-qr-box {
+        background: var(--cinza-claro);
+        border: 2px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .emec-qr-box:hover {
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        border-color: var(--verde-unipio);
+        background: white;
+      }
+
+      .emec-qr-box::after {
+        content: '🔍 Ampliar';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(28, 90, 28, 0.9);
+        color: white;
+        padding: 0.35rem;
+        font-size: 0.6rem;
+        font-weight: 600;
+        text-align: center;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .emec-qr-box:hover::after {
+        transform: translateY(0);
+      }
+
+      .emec-qr-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* Info e-MEC */
+      .emec-info {
+        margin-top: auto;
+        text-align: center;
+        padding: 0.8rem;
+        background: #f0f2f0;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        margin-top: 2rem;
+      }
+
+      .emec-info-icon {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .emec-info-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--verde-navbar);
+        margin-bottom: 0.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .emec-info-text {
+        font-size: 0.65rem;
+        color: var(--cinza-medio);
+        line-height: 1.4;
+      }
+
+      /* ==================== MODAL QR E-MEC EXPANDIDO ==================== */
+      .emec-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+      }
+
+      .emec-modal-overlay.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .emec-modal-content {
+        background: var(--branco);
+        border: none;
+        border-radius: 20px;
+        padding: 2rem;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      .emec-modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+        background: var(--cinza-claro);
+        color: var(--cinza-escuro);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        line-height: 1;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      .emec-modal-close:hover {
+        background: var(--vermelho-pio);
+        color: white;
+        transform: rotate(90deg);
+      }
+
+      .emec-modal-image {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        border-radius: 12px;
+      }
+
+      /* ==================== LOGOS DAS COLIGADAS ==================== */
+      .logos-section {
+        max-width: 1200px; /* REDUZIDO para acompanhar o container */
+        margin: 0 auto;
+        padding: 0 3rem 2rem;
+        position: relative; /* NÃO é fixed, pode passar por cima do conteúdo */
+      }
+
+      .logos-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .logo-box {
+        width: 100%;
+        max-width: 140px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--branco);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 0.8rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        border-color: var(--verde-unipio);
+      }
+
+      .logo-box img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      /* ==================== INDICADORES CARROUSEL (MOBILE) ==================== */
+      .carousel-indicators {
+        display: none; /* Oculto no desktop */
+      }
+
+      /* ==================== RESPONSIVE ==================== */
+      @media (max-width: 1200px) {
+        .main-tabs {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .navbar-title {
+          position: static;
+          transform: none;
+          font-size: 1.5rem;
+        }
+
+        .navbar {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .logos-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+
+        .educonnect-qr-grid,
+        .emec-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* ==================== CARROUSEL MOBILE ==================== */
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 1rem;
+        }
+
+        .navbar-logo {
+          height: 45px;
+        }
+
+        .navbar-title {
+          font-size: 1.2rem;
+        }
+
+        .container {
+          padding: 1rem;
+          overflow: hidden; /* Esconde o overflow lateral */
+        }
+
+        /* CARROUSEL COM SCROLL SNAP */
+        .main-tabs {
+          display: flex;
+          overflow-x: scroll;
+          scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none; /* Firefox */
+        }
+
+        .main-tabs::-webkit-scrollbar {
+          display: none; /* Chrome, Safari */
+        }
+
+        .tab-card {
+          flex: 0 0 85vw; /* Cada card ocupa 85% da viewport */
+          scroll-snap-align: center;
+          min-height: 380px; /* Reduzido de 280px para compactar */
+          padding: 1.25rem;
+        }
+
+        .tab-title {
+          font-size: 1rem;
+          margin-bottom: 0.8rem;
+          padding-bottom: 0.6rem;
+        }
+
+        /* Botões menores no mobile */
+        .btn-access {
+          padding: 1.2rem 0.4rem;
+          font-size: 0.85rem;
+          gap: 0.5rem;
+        }
+
+        .btn-icon {
+          width: 50px;
+          height: 50px;
+        }
+
+        .btn-icon svg {
+          width: 28px;
+          height: 28px;
+        }
+
+        .access-buttons {
+          gap: 0.5rem;
+        }
+
+        .section-subtitle {
+          font-size: 0.7rem;
+          margin-bottom: 0.4rem;
+        }
+
+        .divider {
+          margin: 0.5rem 0;
+        }
+
+        /* QR Codes compactos */
+        .educonnect-qr-grid,
+        .emec-grid {
+          gap: 0.6rem;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .educonnect-qr-box,
+        .emec-qr-box {
+          padding: 0.4rem;
+        }
+
+        .educonnect-qr-label {
+          font-size: 0.6rem;
+          margin-bottom: 0.2rem;
+        }
+
+        .emec-info {
+          padding: 0.6rem;
+          margin-top: 1rem;
+        }
+
+        .emec-info-title {
+          font-size: 0.7rem;
+        }
+
+        .emec-info-text {
+          font-size: 0.6rem;
+        }
+
+        /* INDICADORES DO CARROUSEL */
+        .carousel-indicators {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .carousel-indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: rgba(28, 90, 28, 0.3);
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+          background: var(--verde-navbar);
+          width: 24px;
+          border-radius: 4px;
+        }
+
+        /* Logos compactas no mobile */
+        .logos-section {
+          padding: 0 1rem 1.5rem;
+        }
+
+        .logos-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.8rem;
+        }
+
+        .logo-box {
+          height: 60px;
+          max-width: 100%;
+        }
+      }
+
+      /* ==================== PLACEHOLDER PARA IMAGENS ==================== */
+      .placeholder-qr {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--cinza-claro) 0%, var(--cinza-medio) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.875rem;
+        color: var(--cinza-escuro);
+        text-align: center;
+        padding: 1rem;
+      }
+
+      /* V-Libras customizado */
+      [vw] {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        z-index: 99999 !important;
+      }
+
+      [vw-access-button] {
+        background: var(--verde-navbar) !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <img
+        src="./img/LOGO_Grupo.png"
+        alt="Grupo UniPio"
+        class="navbar-logo"
+        onerror="
+          this.src =
+            'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'60\'%3E%3Crect fill=\'%23fff\' width=\'200\' height=\'60\' rx=\'5\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%231c5a1c\' font-family=\'Inter\' font-size=\'16\' font-weight=\'700\'%3EGrupo UniPio%3C/text%3E%3C/svg%3E'
+        "
+      />
+      <h1 class="navbar-title">Portal de Integração</h1>
+    </nav>
+
+    <main class="container">
+      <!-- Indicadores do Carrousel (apenas mobile) -->
+      <div class="carousel-indicators">
+        <button class="carousel-indicator active" onclick="scrollToCard(0)"></button>
+        <button class="carousel-indicator" onclick="scrollToCard(1)"></button>
+        <button class="carousel-indicator" onclick="scrollToCard(2)"></button>
+      </div>
+
+      <div class="main-tabs" id="mainTabs">
+        <div class="tab-card">
+          <h3 class="tab-title">APP EDUCONNECT</h3>
+
+          <div class="educonnect-qr-grid">
+            <div class="educonnect-qr-box" onclick="openEmecModal('./img/QrCodeCPD.png')">
+              <div class="educonnect-qr-label">Pio Décimo</div>
+              <div class="educonnect-qr-image">
+                <img
+                  src="./img/QrCodeCPD.png"
+                  alt="QR Code Pio Décimo"
+                  onerror="
+                    this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>QR Code</div>'
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="educonnect-qr-box" onclick="openEmecModal('./img/QrCodeCEPJSS.png')">
+              <div class="educonnect-qr-label">CEPJSS</div>
+              <div class="educonnect-qr-image">
+                <img
+                  src="./img/QrCodeCEPJSS.png"
+                  alt="QR Code CEPJSS"
+                  onerror="
+                    this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>QR Code</div>'
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="educonnect-qr-box" onclick="openEmecModal('./img/QrCodeFPD.png')">
+              <div class="educonnect-qr-label">UniPio</div>
+              <div class="educonnect-qr-image">
+                <img
+                  src="./img/QrCodeFPD.png"
+                  alt="QR Code UniPio"
+                  onerror="
+                    this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>QR Code</div>'
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="educonnect-qr-box" onclick="openEmecModal('./img/QrCodeFAPIDE.png')">
+              <div class="educonnect-qr-label">FAPIDE</div>
+              <div class="educonnect-qr-image">
+                <img
+                  src="./img/QrCodeFAPIDE.png"
+                  alt="QR Code FAPIDE"
+                  onerror="
+                    this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>QR Code</div>'
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-card">
+          <h3 class="tab-title">PORTAIS ACADÊMICOS</h3>
+
+          <div class="tab-content-divided">
+            <div>
+              <div class="access-buttons">
+                <a
+                  href="https://portal.piodecimo.edu.br/portalacademico/"
+                  target="_blank"
+                  class="btn-access"
+                >
+                  <div class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm0 13.5l-7-3.18v5.01c0 2.07 3.13 3.67 7 3.67s7-1.6 7-3.67v-5.01l-7 3.18z"
+                      />
+                    </svg>
+                  </div>
+                  <span>Aluno</span>
+                </a>
+
+                <a
+                  href="https://portal.piodecimo.edu.br/Corpore.Net/Login.aspx"
+                  target="_blank"
+                  class="btn-access"
+                >
+                  <div class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path
+                        d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"
+                      />
+                    </svg>
+                  </div>
+                  <span>Professor</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div>
+              <div class="section-subtitle">Curso Técnico</div>
+              <a
+                href="https://pionet.piodecimo.edu.br/Portalcolegio/"
+                target="_blank"
+                class="btn-access"
+                style="width: 100%"
+              >
+                <div class="btn-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2zm0 13.5l-7-3.18v5.01c0 2.07 3.13 3.67 7 3.67s7-1.6 7-3.67v-5.01l-7 3.18z"
+                    />
+                  </svg>
+                </div>
+                <span>Aluno</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-card">
+          <h3 class="tab-title">QR Code e-MEC</h3>
+
+          <div class="emec-grid">
+            <div class="emec-qr-box" onclick="openEmecModal('./img/QR_CODE_E_MEC_FPD.png')">
+              <img
+                src="./img/QR_CODE_E_MEC_FPD.png"
+                alt="QR Code e-MEC FPD"
+                onerror="
+                  this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>QR Code e-MEC</div>'
+                "
+              />
+            </div>
+
+            <div class="emec-qr-box" onclick="openEmecModal('./img/QR_CODE_E_MEC_FAPIDE.png')">
+              <img
+                src="./img/QR_CODE_E_MEC_FAPIDE.png"
+                alt="QR Code e-MEC FAPIDE"
+                onerror="
+                  this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>QR Code e-MEC</div>'
+                "
+              />
+            </div>
+          </div>
+
+          <div class="emec-info">
+            <div class="emec-info-icon">ℹ️</div>
+            <div class="emec-info-title">O que é o e-MEC?</div>
+            <div class="emec-info-text">
+              Sistema de consulta pública de<br />instituições credenciadas pelo MEC
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="logos-section">
+      <div class="logos-grid">
+        <div class="logo-box">
+          <a href="https://www.piodecimo.edu.br" target="_blank">
+            <img
+              src="./img/marcaCPD_h.png"
+              alt="Pio Décimo Colégio"
+              onerror="
+                this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>Pio Décimo</div>'
+              "
+            />
+          </a>
+        </div>
+        <div class="logo-box">
+          <a href="https://unipio.edu.br/" target="_blank">
+            <img
+              src="./img/marca_unipio_h.png"
+              alt="UniPio"
+              onerror="this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>UniPio</div>'"
+            />
+          </a>
+        </div>
+        <div class="logo-box">
+          <a href="https://www.cepjss.com.br/" target="_blank">
+            <img
+              src="./img/LOGO_CEPJSS.png"
+              alt="CEPJSS"
+              onerror="this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>CEPJSS</div>'"
+            />
+          </a>
+        </div>
+        <div class="logo-box">
+          <a href="https://fapide.com.br/" target="_blank">
+            <img
+              src="./img/marcaFPDC_h.png"
+              alt="Pio Décimo Canindé"
+              onerror="this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>FAPIDE</div>'"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="emec-modal-overlay" id="emecModal">
+      <div class="emec-modal-content">
+        <button class="emec-modal-close" onclick="closeEmecModal()">×</button>
+        <img id="emecModalImage" src="" alt="QR Code Expandido" class="emec-modal-image" />
+      </div>
+    </div>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+      // ========== MODAL QR E-MEC ==========
+      function openEmecModal(imageSrc) {
+        const modal = document.getElementById('emecModal');
+        const modalImage = document.getElementById('emecModalImage');
+        modalImage.src = imageSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeEmecModal() {
+        document.getElementById('emecModal').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          closeEmecModal();
+        }
+      });
+
+      document.getElementById('emecModal').addEventListener('click', e => {
+        if (e.target.classList.contains('emec-modal-overlay')) {
+          closeEmecModal();
+        }
+      });
+
+      // ========== CARROUSEL MOBILE ==========
+      function scrollToCard(index) {
+        const mainTabs = document.getElementById('mainTabs');
+        const cards = mainTabs.querySelectorAll('.tab-card');
+        if (cards[index]) {
+          cards[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center',
+          });
+          updateIndicators(index);
+        }
+      }
+
+      function updateIndicators(activeIndex) {
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        indicators.forEach((indicator, index) => {
+          if (index === activeIndex) {
+            indicator.classList.add('active');
+          } else {
+            indicator.classList.remove('active');
+          }
+        });
+      }
+
+      // Atualiza indicadores ao fazer scroll
+      const mainTabs = document.getElementById('mainTabs');
+      mainTabs.addEventListener('scroll', () => {
+        const cards = mainTabs.querySelectorAll('.tab-card');
+        const scrollLeft = mainTabs.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 16; // card width + gap
+
+        const activeIndex = Math.round(scrollLeft / cardWidth);
+        updateIndicators(activeIndex);
+      });
+    </script>
+  </body>
+</html>
