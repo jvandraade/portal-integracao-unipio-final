@@ -91,7 +91,7 @@
       /* ==================== MAIN CONTENT ==================== */
       .container {
         flex: 1;
-        max-width: 1200px; /* REDUZIDO de 1600px para mais espaço lateral */
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem 3rem;
         width: 100%;
@@ -122,7 +122,7 @@
         font-weight: 700;
         text-align: center;
         margin-bottom: 1rem;
-        color: var(--verde-navbar); /* VERDE DA NAVBAR */
+        color: var(--verde-navbar);
         text-transform: uppercase;
         border-bottom: 3px solid var(--preto);
         padding-bottom: 0.8rem;
@@ -455,10 +455,10 @@
 
       /* ==================== LOGOS DAS COLIGADAS ==================== */
       .logos-section {
-        max-width: 1200px; /* REDUZIDO para acompanhar o container */
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 3rem 2rem;
-        position: relative; /* NÃO é fixed, pode passar por cima do conteúdo */
+        position: relative;
       }
 
       .logos-grid {
@@ -547,7 +547,7 @@
 
         .container {
           padding: 1rem;
-          overflow: hidden; /* Esconde o overflow lateral */
+          overflow: hidden;
         }
 
         /* CARROUSEL COM SCROLL SNAP */
@@ -567,9 +567,9 @@
         }
 
         .tab-card {
-          flex: 0 0 85vw; /* Cada card ocupa 85% da viewport */
+          flex: 0 0 85vw;
           scroll-snap-align: center;
-          min-height: 380px; /* Reduzido de 280px para compactar */
+          min-height: 380px;
           padding: 1.25rem;
         }
 
@@ -609,7 +609,6 @@
           margin: 0.5rem 0;
         }
 
-        /* QR Codes compactos */
         .educonnect-qr-grid,
         .emec-grid {
           gap: 0.6rem;
@@ -663,20 +662,20 @@
           border-radius: 4px;
         }
 
-        /* Logos compactas no mobile */
         .logos-section {
-          padding: 0.5rem 1rem 1rem; /* Padding superior reduzido de 0 para 0.5rem */
+          padding: 0 1rem 0.5rem;
+          margin-top: -0.5rem;
         }
 
         .logos-grid {
-          grid-template-columns: repeat(4, 1fr); /* 4 logos lado a lado */
-          gap: 0.5rem; /* Gap menor */
+          grid-template-columns: repeat(4, 1fr);
+          gap: 0.5rem;
         }
 
         .logo-box {
-          height: 45px; /* Bem menores */
+          height: 45px;
           max-width: 100%;
-          padding: 0.4rem; /* Padding menor */
+          padding: 0.4rem;
         }
       }
 
@@ -727,8 +726,8 @@
     <main class="container">
       <!-- Indicadores do Carrousel (apenas mobile) -->
       <div class="carousel-indicators">
-        <button class="carousel-indicator active" onclick="scrollToCard(0)"></button>
-        <button class="carousel-indicator" onclick="scrollToCard(1)"></button>
+        <button class="carousel-indicator" onclick="scrollToCard(0)"></button>
+        <button class="carousel-indicator active" onclick="scrollToCard(1)"></button>
         <button class="carousel-indicator" onclick="scrollToCard(2)"></button>
       </div>
 
@@ -796,7 +795,6 @@
 
           <div class="tab-content-divided">
             <div>
-              <!-- REMOVIDO: section-subtitle "Portal Acadêmico" -->
               <div class="access-buttons">
                 <a
                   href="https://portal.piodecimo.edu.br/portalacademico/"
@@ -1008,10 +1006,20 @@
       mainTabs.addEventListener('scroll', () => {
         const cards = mainTabs.querySelectorAll('.tab-card');
         const scrollLeft = mainTabs.scrollLeft;
-        const cardWidth = cards[0].offsetWidth + 16; // card width + gap
+        const cardWidth = cards[0].offsetWidth + 16;
 
         const activeIndex = Math.round(scrollLeft / cardWidth);
         updateIndicators(activeIndex);
+      });
+
+      // ========== SCROLL INICIAL PARA O CARD DO MEIO (MOBILE) ==========
+      window.addEventListener('load', () => {
+        if (window.innerWidth <= 768) {
+          // Apenas no mobile
+          setTimeout(() => {
+            scrollToCard(1);
+          }, 100);
+        }
       });
     </script>
   </body>
