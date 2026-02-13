@@ -40,14 +40,19 @@
 
       /* ==================== CSS VARIABLES ==================== */
       :root {
+        /* Cores principais */
         --verde-unipio: #68ab6a;
         --verde-navbar: #1c5a1c;
         --vermelho-pio: #c20e1a;
         --branco: #fff;
+
+        /* Neutros */
         --cinza-escuro: #333;
         --cinza-medio: #666;
         --cinza-claro: #f5f5f5;
         --preto: #000;
+
+        /* Sombras suaves para botões */
         --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         --shadow-hover: 0 20px 35px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
         --shadow-button: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -97,7 +102,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
       }
 
       .tab-card {
@@ -343,6 +348,7 @@
         object-fit: contain;
       }
 
+      /* Info e-MEC */
       .emec-info {
         margin-top: auto;
         text-align: center;
@@ -371,43 +377,6 @@
         font-size: 0.65rem;
         color: var(--cinza-medio);
         line-height: 1.4;
-      }
-
-      /* ==================== LOGOS DAS COLIGADAS (DENTRO DO CONTAINER) ==================== */
-      .logos-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-        align-items: center;
-        justify-items: center;
-        margin-top: 1rem;
-      }
-
-      .logo-box {
-        width: 100%;
-        max-width: 140px;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--branco);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-        padding: 0.8rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      }
-
-      .logo-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-        border-color: var(--verde-unipio);
-      }
-
-      .logo-box img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
       }
 
       /* ==================== MODAL QR E-MEC EXPANDIDO ==================== */
@@ -484,9 +453,52 @@
         border-radius: 12px;
       }
 
+      /* ==================== LOGOS DAS COLIGADAS ==================== */
+      .logos-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 3rem 2rem;
+        position: relative;
+      }
+
+      .logos-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .logo-box {
+        width: 100%;
+        max-width: 140px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--branco);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 0.8rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        border-color: var(--verde-unipio);
+      }
+
+      .logo-box img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
       /* ==================== INDICADORES CARROUSEL (MOBILE) ==================== */
       .carousel-indicators {
-        display: none;
+        display: none; /* Oculto no desktop */
       }
 
       /* ==================== RESPONSIVE ==================== */
@@ -545,13 +557,13 @@
           scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
           gap: 1rem;
-          margin-bottom: 1rem;
+          margin-bottom: 1.5rem;
           -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
+          scrollbar-width: none; /* Firefox */
         }
 
         .main-tabs::-webkit-scrollbar {
-          display: none;
+          display: none; /* Chrome, Safari */
         }
 
         .tab-card {
@@ -567,6 +579,7 @@
           padding-bottom: 0.6rem;
         }
 
+        /* Botões menores no mobile */
         .btn-access {
           padding: 1.2rem 0.4rem;
           font-size: 0.85rem;
@@ -649,11 +662,14 @@
           border-radius: 4px;
         }
 
-        /* LOGOS COMPACTAS NO MOBILE - INTEGRADAS */
+        .logos-section {
+          padding: 0 1rem 0.5rem;
+          margin-top: -0.5rem;
+        }
+
         .logos-grid {
           grid-template-columns: repeat(4, 1fr);
           gap: 0.5rem;
-          margin-top: 0.5rem; /* Espaçamento mínimo do carrousel */
         }
 
         .logo-box {
@@ -661,38 +677,6 @@
           max-width: 100%;
           padding: 0.4rem;
         }
-      }
-
-      /* ==================== V-LIBRAS MELHORADO ==================== */
-      [vw] {
-        position: fixed !important;
-        top: 50% !important; /* MEIO DA TELA VERTICAL */
-        right: 10px !important;
-        transform: translateY(-50%) !important;
-        z-index: 99999 !important;
-      }
-
-      [vw-access-button] {
-        background: var(--verde-navbar) !important;
-        border-radius: 12px !important; /* Quadrado arredondado ao invés de oval */
-        width: 50px !important;
-        height: 50px !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border: 2px solid var(--branco) !important;
-      }
-
-      [vw-access-button]:hover {
-        transform: scale(1.1) !important;
-        box-shadow: 0 6px 20px rgba(28, 90, 28, 0.5) !important;
-      }
-
-      /* Ajuste do plugin quando aberto */
-      [vw-plugin-wrapper] {
-        border-radius: 12px !important;
-        overflow: hidden !important;
       }
 
       /* ==================== PLACEHOLDER PARA IMAGENS ==================== */
@@ -707,6 +691,20 @@
         color: var(--cinza-escuro);
         text-align: center;
         padding: 1rem;
+      }
+
+      /* V-Libras customizado */
+      [vw] {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        z-index: 99999 !important;
+      }
+
+      [vw-access-button] {
+        background: var(--verde-navbar) !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
       }
     </style>
   </head>
@@ -887,8 +885,9 @@
           </div>
         </div>
       </div>
+    </main>
 
-      <!-- LOGOS INTEGRADAS NO CONTAINER -->
+    <div class="logos-section">
       <div class="logos-grid">
         <div class="logo-box">
           <a href="https://www.piodecimo.edu.br" target="_blank">
@@ -929,7 +928,7 @@
           </a>
         </div>
       </div>
-    </main>
+    </div>
 
     <div class="emec-modal-overlay" id="emecModal">
       <div class="emec-modal-content">
@@ -951,6 +950,7 @@
     </script>
 
     <script>
+      // ========== MODAL QR E-MEC ==========
       function openEmecModal(imageSrc) {
         const modal = document.getElementById('emecModal');
         const modalImage = document.getElementById('emecModalImage');
@@ -976,6 +976,7 @@
         }
       });
 
+      // ========== CARROUSEL MOBILE ==========
       function scrollToCard(index) {
         const mainTabs = document.getElementById('mainTabs');
         const cards = mainTabs.querySelectorAll('.tab-card');
@@ -1000,6 +1001,7 @@
         });
       }
 
+      // Atualiza indicadores ao fazer scroll
       const mainTabs = document.getElementById('mainTabs');
       mainTabs.addEventListener('scroll', () => {
         const cards = mainTabs.querySelectorAll('.tab-card');
@@ -1010,8 +1012,10 @@
         updateIndicators(activeIndex);
       });
 
+      // ========== SCROLL INICIAL PARA O CARD DO MEIO (MOBILE) ==========
       window.addEventListener('load', () => {
         if (window.innerWidth <= 768) {
+          // Apenas no mobile
           setTimeout(() => {
             scrollToCard(1);
           }, 100);
