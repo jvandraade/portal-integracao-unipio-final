@@ -453,7 +453,7 @@
         border-radius: 12px;
       }
 
-      /* ==================== LOGOS DAS COLIGADAS ==================== */
+      /* ==================== LOGOS DAS COLIGADAS (FOOTER DESKTOP) ==================== */
       .logos-section {
         max-width: 1200px;
         margin: 0 auto;
@@ -467,6 +467,11 @@
         gap: 1.5rem;
         align-items: center;
         justify-items: center;
+      }
+
+      /* LOGOS MOBILE - OCULTAS NO DESKTOP */
+      .logos-grid-mobile {
+        display: none; /* Oculto no desktop */
       }
 
       .logo-box {
@@ -662,17 +667,19 @@
           border-radius: 4px;
         }
 
+        /* MOSTRAR LOGOS MOBILE E OCULTAR FOOTER */
         .logos-section {
-          padding: 0 1rem 0.5rem;
-          margin-top: -0.5rem;
+          display: none !important; /* footer no mobile oculto */
         }
 
-        .logos-grid {
+        .logos-grid-mobile {
+          display: grid; /* Mostra logos integradas */
           grid-template-columns: repeat(4, 1fr);
           gap: 0.5rem;
+          margin-top: 0.5rem;
         }
 
-        .logo-box {
+        .logos-grid-mobile .logo-box {
           height: 45px;
           max-width: 100%;
           padding: 0.4rem;
@@ -885,8 +892,51 @@
           </div>
         </div>
       </div>
+
+      <!-- LOGOS MOBILE - INTEGRADAS NO CONTAINER -->
+      <div class="logos-grid-mobile">
+        <div class="logo-box">
+          <a href="https://www.piodecimo.edu.br" target="_blank">
+            <img
+              src="./img/marcaCPD_h.png"
+              alt="Pio Décimo"
+              onerror="
+                this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>Pio Décimo</div>'
+              "
+            />
+          </a>
+        </div>
+        <div class="logo-box">
+          <a href="https://unipio.edu.br/" target="_blank">
+            <img
+              src="./img/marca_unipio_h.png"
+              alt="UniPio"
+              onerror="this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>UniPio</div>'"
+            />
+          </a>
+        </div>
+        <div class="logo-box">
+          <a href="https://www.cepjss.com.br/" target="_blank">
+            <img
+              src="./img/LOGO_CEPJSS.png"
+              alt="CEPJSS"
+              onerror="this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>CEPJSS</div>'"
+            />
+          </a>
+        </div>
+        <div class="logo-box">
+          <a href="https://fapide.com.br/" target="_blank">
+            <img
+              src="./img/marcaFPDC_h.png"
+              alt="FAPIDE"
+              onerror="this.parentElement.innerHTML = '<div class=\'placeholder-qr\'>FAPIDE</div>'"
+            />
+          </a>
+        </div>
+      </div>
     </main>
 
+    <!-- FOOTER - VISÍVEL APENAS NO DESKTOP -->
     <div class="logos-section">
       <div class="logos-grid">
         <div class="logo-box">
@@ -950,7 +1000,6 @@
     </script>
 
     <script>
-      // ========== MODAL QR E-MEC ==========
       function openEmecModal(imageSrc) {
         const modal = document.getElementById('emecModal');
         const modalImage = document.getElementById('emecModalImage');
@@ -976,7 +1025,6 @@
         }
       });
 
-      // ========== CARROUSEL MOBILE ==========
       function scrollToCard(index) {
         const mainTabs = document.getElementById('mainTabs');
         const cards = mainTabs.querySelectorAll('.tab-card');
@@ -1001,7 +1049,6 @@
         });
       }
 
-      // Atualiza indicadores ao fazer scroll
       const mainTabs = document.getElementById('mainTabs');
       mainTabs.addEventListener('scroll', () => {
         const cards = mainTabs.querySelectorAll('.tab-card');
@@ -1012,10 +1059,8 @@
         updateIndicators(activeIndex);
       });
 
-      // ========== SCROLL INICIAL PARA O CARD DO MEIO (MOBILE) ==========
       window.addEventListener('load', () => {
         if (window.innerWidth <= 768) {
-          // Apenas no mobile
           setTimeout(() => {
             scrollToCard(1);
           }, 100);
