@@ -669,7 +669,7 @@
 
         /* MOSTRAR LOGOS MOBILE E OCULTAR FOOTER */
         .logos-section {
-          display: none !important; /* footer no mobile oculto */
+          display: none !important; /* Oculta footer no mobile */
         }
 
         .logos-grid-mobile {
@@ -700,18 +700,49 @@
         padding: 1rem;
       }
 
-      /* V-Libras customizado */
+      /* ==================== V-LIBRAS MELHORADO ==================== */
       [vw] {
         position: fixed !important;
+        left: 10px !important; /* Lado ESQUERDO */
         bottom: 20px !important;
-        right: 20px !important;
         z-index: 99999 !important;
       }
 
       [vw-access-button] {
         background: var(--verde-navbar) !important;
-        border-radius: 50% !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        border-radius: 8px !important; /* Retangular arredondado */
+        width: 50px !important;
+        height: 50px !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 2px solid var(--branco) !important;
+        transition: all 0.3s ease !important;
+      }
+
+      [vw-access-button]:hover {
+        transform: scale(1.1) !important;
+        box-shadow: 0 6px 20px rgba(28, 90, 28, 0.5) !important;
+      }
+
+      /* Plugin quando aberto */
+      [vw-plugin-wrapper] {
+        border-radius: 12px !important;
+        overflow: hidden !important;
+      }
+
+      /* Mobile: ajustar posição */
+      @media (max-width: 768px) {
+        [vw] {
+          left: 10px !important;
+          bottom: 10px !important;
+        }
+
+        [vw-access-button] {
+          width: 45px !important;
+          height: 45px !important;
+        }
       }
     </style>
   </head>
