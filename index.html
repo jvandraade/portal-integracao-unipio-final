@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -29,6 +29,11 @@
         font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+
+      html {
+        overflow-y: scroll; /* Força scrollbar sempre visível — evita layout shift */
+        scrollbar-gutter: stable;
       }
 
       body {
@@ -702,49 +707,17 @@
         padding: 1rem;
       }
 
-      /* ==================== V-LIBRAS MELHORADO ==================== */
+      /* V-Libras customizado */
       [vw] {
         position: fixed !important;
-        left: 10px !important; /* Lado ESQUERDO */
         bottom: 20px !important;
         z-index: 99999 !important;
       }
 
       [vw-access-button] {
         background: var(--verde-navbar) !important;
-        border-radius: 8px !important; /* Retangular arredondado */
-        width: 50px !important;
-        height: 50px !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        border: 2px solid var(--branco) !important;
-        transition: all 0.3s ease !important;
-      }
-
-      [vw-access-button]:hover {
-        transform: scale(1.1) !important;
-        box-shadow: 0 6px 20px rgba(28, 90, 28, 0.5) !important;
-      }
-
-      /* Plugin quando aberto */
-      [vw-plugin-wrapper] {
-        border-radius: 12px !important;
-        overflow: hidden !important;
-      }
-
-      /* Mobile: ajustar posição */
-      @media (max-width: 768px) {
-        [vw] {
-          left: 10px !important;
-          bottom: 10px !important;
-        }
-
-        [vw-access-button] {
-          width: 45px !important;
-          height: 45px !important;
-        }
+        border-radius: 50% !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
       }
     </style>
   </head>
@@ -1036,6 +1009,7 @@
         }
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
       function openEmecModal(imageSrc) {
@@ -1097,8 +1071,10 @@
         updateIndicators(activeIndex);
       });
 
+      // ========== SCROLL INICIAL PARA O CARD DO MEIO (MOBILE) ==========
       window.addEventListener('load', () => {
         if (window.innerWidth <= 768) {
+          // Apenas no mobile
           setTimeout(() => {
             scrollToCard(1);
           }, 100);
